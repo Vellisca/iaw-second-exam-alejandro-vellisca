@@ -23,7 +23,7 @@ export const getAllItemsHandler = async (event) => {
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#scan-property
     // https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Scan.html
     var params = {
-        TableName : tableName
+        TableName: tableName
     };
 
     try {
@@ -32,10 +32,27 @@ export const getAllItemsHandler = async (event) => {
     } catch (err) {
         console.log("Error", err);
     }
+    let stringy = JSON.stringify(items);
+    let valores
+    console.log("DEBUG" + stringy)
+    //for (let i = 0; i < stringy.length; i++) {
+    //        for (const valor of stringy[i].disponible) {
+    //            if (valor == true) {
+    //                valores = valores + valor;
+    //            }
+    //        }
+    //
+    //}
+    for (const valor of stringy) {
+        if (valor.disponible == true) {
+            console.log("STRINGY"+valor.disponible);
+            valores = valores + valor;
+        }
+    }
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify(items)
+        body: JSON.stringify(valores)
     };
 
     // All log statements are written to CloudWatch
