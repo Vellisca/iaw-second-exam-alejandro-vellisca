@@ -32,21 +32,15 @@ export const getAllItemsHandler = async (event) => {
     } catch (err) {
         console.log("Error", err);
     }
-    let stringy = JSON.stringify(items);
-    let valores
-    console.log("DEBUG" + stringy)
-    //for (let i = 0; i < stringy.length; i++) {
-    //        for (const valor of stringy[i].disponible) {
-    //            if (valor == true) {
-    //                valores = valores + valor;
-    //            }
-    //        }
-    //
-    //}
-    for (const valor of stringy) {
-        if (valor.disponible == true) {
-            console.log("STRINGY"+valor.disponible);
-            valores = valores + valor;
+    let libros = items;
+    console.log("DEBUG",libros)
+    let valores = []
+    for (const libro of libros) {
+        console.log("DEBUG", libro['disponible']);
+        console.log("DEBUG", libro.disponible);
+        if (libro['disponible'] == true) {
+            console.log("STRINGY"+libro["disponible"]);
+            valores.push(libro);
         }
     }
 
