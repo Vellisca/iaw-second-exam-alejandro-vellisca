@@ -39,7 +39,7 @@ export const getAllItemsHandler = async (event) => {
         console.log("DEBUG", libro['disponible']);
         console.log("DEBUG", libro.disponible);
         if (libro['disponible'] == true) {
-            console.log("STRINGY"+libro["disponible"]);
+            console.log("Es true"+libro["nombreLibro"]);
             valores.push(libro);
         }
     }
